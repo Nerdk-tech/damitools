@@ -1,0 +1,76 @@
+{
+  "title": "Top 10 Safe Hacking & Cybersecurity Courses — Premium",
+  "description": "Collection of 10 hand-picked ethical hacking & cybersecurity courses. Learn from Burp Suite to SQL Injection, Android app pentesting, Parrot OS hacking, and more. Access after payment confirmation.",
+  "notes": "This bundle is for educational purposes only. Knowledge should be used ethically and legally.",
+  "files": [
+    {
+      "name": "1. Burp Suite Course (Udemy)",
+      "url": "https://www.udemy.com/course/burp-suite/",
+      "type": "link"
+    },
+    {
+      "name": "2. SQL Injection (Ethical Hacking) (Udemy)",
+      "url": "https://www.udemy.com/course/sql-injection-ethical-hacking/",
+      "type": "link"
+    },
+    {
+      "name": "3. Computer Hacking Fundamentals (Udemy)",
+      "url": "https://www.udemy.com/course/computer-hacking-fundamentals/",
+      "type": "link"
+    },
+    {
+      "name": "4. Ethical Hacking Basics (Kali) (Udemy)",
+      "url": "https://www.udemy.com/course/ethical-hacking-basics-kali-20211/",
+      "type": "link"
+    },
+    {
+      "name": "5. Foundations of Hacking & Pentesting Android Apps (Udemy)",
+      "url": "https://www.udemy.com/course/foundations-of-hacking-and-pentesting-android-apps/",
+      "type": "link"
+    },
+    {
+      "name": "6. Ethical Hacking for Beginners (Hindi) (Udemy)",
+      "url": "https://www.udemy.com/course/ethical-hacking-for-beginners-in-hindi/",
+      "type": "link"
+    },
+    {
+      "name": "7. Web Hacking: XSS & SQL Injection (Udemy)",
+      "url": "https://www.udemy.com/course/lees-web-hacking-cross-site-scripting-sql-injection/",
+      "type": "link"
+    },
+    {
+      "name": "8. Ethical Hacking with Parrot Security OS (Udemy)",
+      "url": "https://www.udemy.com/course/ethical-hacking-with-parrot-security-os/",
+      "type": "link"
+    },
+    {
+      "name": "9. Ethical Hacking for Beginners — Beginner to Advance (Udemy)",
+      "url": "https://www.udemy.com/course/ethical-hacking-for-beginners-beginner-to-advance/",
+      "type": "link"
+    },
+    {
+      "name": "10. provided",
+      "url": "",
+      "type": "link"
+    }
+  ],
+  "tags": ["cybersecurity", "ethical-hacking", "pentesting", "premium"],
+  "level": "beginner to intermediate",
+  "price": {
+    "USD": 5,
+    "NGN": 5000
+  },
+  "payment_methods": [
+    {
+      "method": "OPAY",
+      "details": "9120185747. VIOLET OSARO-LIBERTY.",
+      "instructions": "Send only the amount to this. Don't send lower or higher. Send screenshot to admin."
+    },
+    {
+      "method": "CRYPTO TRX",
+      "details": "TMAeYcL4gc1a5pMBcQUBGSD3KQHgVajXeS",
+      "instructions": "Send exact amount in TRX and send screenshot to admin."
+    }
+  ],
+  "protected": true
+}

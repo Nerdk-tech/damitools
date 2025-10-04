@@ -1,0 +1,29 @@
+{
+  "title": "Premium:INSTANT WHATSAPP UNBAN TOOL COMMAND",
+  "description": "Premium course — includes advanced demonstrations and materials. This listing does NOT include illegal or harmful instructions. Only add files and links you have the legal right to distribute.",
+  "price_usd": 5,
+  "price_ngn": 5000,
+  "currency": "USD/NGN",
+  "notes": "After purchase, send proof of payment (screenshot/txid) to the contact method in config.json. Admin will then provide access (manual or automated). Do not upload illegal material.",
+  "access_instruction: pay with any of the payment methods and contact the admin page and once confirmed. you get the course",
+  "files": [
+    {
+      "name": "Contact support",
+      "url": "t.me/nate_xxxx",
+      "type": "telegram"
+    }
+  ],
+  "payment_methods": [
+    {
+      "method": "OPAY",
+      "details": "9120185747. VIOLET OSARO-LIBERTY.",
+      "instructions": "Send only the amount to this. don't send lower or higher. send screenshot to admin"
+    },
+    {
+      "method": "CRYPTO TRX",
+      "details": "TMAeYcL4gc1a5pMBcQUBGSD3KQHgVajXeS",
+      "instructions": "Send exact amount in TRX and send screenshot to admin."
+    }
+  ],
+  "protected": true
+}

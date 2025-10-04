@@ -1,0 +1,25 @@
+{
+  "title": "WhatsApp Bot Mastery — Premium",
+  "description": "Learn how to code WhatsApp bots from scratch. This course teaches building, deploying, and managing your own WhatsApp bots using JavaScript, Node.js, and Baileys. Perfect for creators, developers, and tech enthusiasts aiming to automate WhatsApp workflows and build advanced bot features.",
+  "notes": "Educational purposes only. Do not distribute bots that violate WhatsApp Terms of Service. Delivery is manual — buyers must contact the admin after payment to receive the course materials.",
+  "files": [],
+  "tags": ["WhatsApp", "bots", "automation", "Node.js", "Baileys"],
+  "level": "beginner to advanced",
+  "price": {
+    "USD": 10,
+    "NGN": 5000
+  },
+  "payment_methods": [
+    {
+      "method": "OPAY",
+      "details": "9120185747. VIOLET OSARO-LIBERTY.",
+      "instructions": "Send only the exact amount. Don’t send lower or higher. After payment, DM admin to get the course."
+    },
+    {
+      "method": "CRYPTO TRX",
+      "details": "TMAeYcL4gc1a5pMBcQUBGSD3KQHgVajXeS",
+      "instructions": "Send exact amount in TRX. After payment, DM admin to get the course."
+    }
+  ],
+  "protected": true
+}

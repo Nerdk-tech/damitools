@@ -1,0 +1,39 @@
+{
+  "title": "🚀 15 Million Digital Products Bundle — Premium",
+  "description": "A large bundle of digital assets and educational resources (templates, bundles, plugins, prompts, and editing courses) provided for educational and resale-rights content. This listing does NOT include any illegal or infringing content. Only add and share files you have the legal right to distribute.",
+  "notes": "IMPORTANT: Verify that all files you share are legal to distribute and that you have the necessary rights. Do NOT include copyrighted software, cracked applications, or any files that violate terms of service. Use this product for lawful, ethical, and educational purposes only.",
+  "files": [
+    {
+      "name": "Main Bundle (Drive Folder)",
+      "url": "https://drive.google.com/drive/folders/1YRPCqRtYbfWaUGxtDa7PW9uedwPGQSOT",
+      "type": "link"
+    },
+    {
+      "name": "Prompt Collection (Docs view)",
+      "url": "https://docs.google.com/spreadsheets/u/0/d/1OP8oUzIOFkSCYTst43Y9mmasYvdbQkCKIJiQEa_qm-0/htmlview",
+      "type": "link"
+    },
+    {
+      "name": "Editing Skool — Course Folder",
+      "url": "https://drive.google.com/drive/folders/13M-VmvlSGVeOTv7lf-lJUjxBw2YdzU2-",
+      "type": "link"
+    }
+  ],
+  "price_usd": null,
+  "price_ngn": null,
+  "currency": "USD/NGN",
+  "notes_for_buyers": "This is a premium product. After payment, buyers must send proof of payment (screenshot or txid) to the admin contact in `config.json`. Admin will then provide access to the purchased files manually or via a private link.",
+  "payment_methods": [
+    {
+      "method": "OPAY",
+      "details": "9120185747. VIOLET OSARO-LIBERTY.",
+      "instructions": "Send only the exact amount. Do not send lower or higher. Send screenshot to admin."
+    },
+    {
+      "method": "CRYPTO TRX",
+      "details": "TMAeYcL4gc1a5pMBcQUBGSD3KQHgVajXeS",
+      "instructions": "Send the exact amount in TRX and send a screenshot or TXID to the admin."
+    }
+  ],
+  "protected": true
+}
