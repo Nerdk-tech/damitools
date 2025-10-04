@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact - <%= config.siteName %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial, sans-serif; background: #111; color: #fff; margin: 0; padding: 0; }
+    header { background: #222; padding: 15px; text-align: center; }
+    header img { max-height: 60px; }
+    nav { background: #333; padding: 10px; text-align: center; }
+    nav a { color: #fff; margin: 0 15px; text-decoration: none; }
+    section { padding: 20px; }
+    a { color: #4CAF50; }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="<%= config.logo %>" alt="Logo">
+    <h1><%= config.siteName %></h1>
+  </header>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/contact">Contact</a>
+  </nav>
+  <section>
+    <h2>Contact Us</h2>
+    <p>Email: <a href="mailto:<%= config.contact.email %>"><%= config.contact.email %></a></p>
+    <p>WhatsApp: <a href="<%= config.contact.whatsapp %>">Chat on WhatsApp</a></p>
+    <p>Telegram: <a href="<%= config.contact.telegram %>">Join our Telegram</a></p>
+  </section>
+</body>
+</html>

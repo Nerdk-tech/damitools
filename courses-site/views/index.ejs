@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= config.siteName %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/assets/css/damitools-style.css">
+
+</head>
+<body>
+  <div class="bg-glow" aria-hidden="true"></div>
+  <div class="container">
+  <header>
+    <img src="<%= config.logo %>" alt="Logo">
+    <h1><%= config.siteName %></h1>
+  </header>
+  <nav style="display:flex;align-items:center;justify-content:space-between;">>
+    <a href="/">Home</a>
+    <a href="/contact">Contact</a>
+  <div><a href="/login.html">Login</a> | <a href="/signup.html">Sign up</a></div>
+</nav>
+  <section>
+    <h2>Free Courses</h2>
+    <% if (freeCourses.length === 0) { %>
+      <p>No free courses yet.</p>
+    <% } else { %>
+      <% freeCourses.forEach(course => { %>
+        <div class="course">
+          <h3><%= course.title %></h3>
+          <p><%= course.description %></p>
+        </div>
+      <% }) %>
+    <% } %>
+
+    <h2>Premium Courses</h2>
+    <% if (premiumCourses.length === 0) { %>
+      <p>No premium courses yet.</p>
+    <% } else { %>
+      <% premiumCourses.forEach(course => { %>
+        <div class="course">
+          <h3><%= course.title %></h3>
+          <p><%= course.description %></p>
+        </div>
+      <% }) %>
+    <% } %>
+  </section>
+  </div>
+
+<script>
+  // Fake frontend-only auth for demo: stores simple user object in localStorage
+  function fakeSignupOrLogin(isSignup){
+    var name = document.getElementById('name') ? document.getElementById('name').value.trim() : '';
+    var email = document.getElementById('email') ? document.getElementById('email').value.trim() : '';
+    if(!name){
+      document.getElementById('msg').textContent = 'Please enter a name';
+      return;
+    }
+    var user = { name: name, email: email || null, loggedAt: Date.now() };
+    localStorage.setItem('damitools_user', JSON.stringify(user));
+    document.getElementById('msg').textContent = 'Logged in as ' + name + ' — redirecting...';
+    setTimeout(function(){ window.location = '/'; }, 800);
+  }
+
+  function logoutFake(){
+    localStorage.removeItem('damitools_user');
+    location.reload();
+  }
+
+  // Show quick banner on pages
+  document.addEventListener('DOMContentLoaded', function(){
+    var user = localStorage.getItem('damitools_user');
+    if(user){
+      try {
+        user = JSON.parse(user);
+        var b = document.getElementById('auth-banner');
+        if(!b){
+          b = document.createElement('div');
+          b.id = 'auth-banner';
+          b.style.cssText = 'position:fixed;right:16px;top:16px;background:rgba(0,0,0,0.6);padding:10px 14px;border-radius:10px;z-index:9999;color:#e6eef4;';
+          document.body.appendChild(b);
+        }
+        b.innerHTML = 'Hello, <strong>'+ (user.name || user.email || 'user') +'</strong> <button onclick="logoutFake()" style="margin-left:10px;padding:6px 8px;border-radius:6px;border:none;background:#ff7a7a;color:#021;cursor:pointer">Logout</button>';
+      } catch(e){}
+    }
+  });
+</script>
+
+</body>
+</html>
