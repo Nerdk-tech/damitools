@@ -1,89 +1,126 @@
-<!doctype html>
-<html><head><meta charset="utf-8"><title>Login - Damitools</title><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="assets/css/damitools-style.css"></head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - DamiTools</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/css/damitools-style.css">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      height: 100vh;
+      font-family: 'Courier New', monospace;
+      color: #0f0;
+      background: black;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+    .container {
+      text-align: center;
+      margin-top: 10%;
+    }
+    .logo {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #0f0;
+      text-shadow: 0 0 20px #0f0;
+    }
+    .card {
+      margin: 40px auto;
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid #0f0;
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 400px;
+    }
+    input {
+      display: block;
+      width: 90%;
+      margin: 10px auto;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      background: rgba(0, 255, 0, 0.1);
+      color: #0f0;
+    }
+    .btn {
+      margin-top: 20px;
+      padding: 12px 40px;
+      background: #0f0;
+      color: black;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background: lime;
+      transform: scale(1.05);
+    }
+    .footer {
+      margin-top: 20px;
+      color: #0f0;
+    }
+  </style>
+</head>
 <body>
-  <div class="bg-glow" aria-hidden="true"></div>
+  <canvas id="matrix"></canvas>
+
   <div class="container">
-    <div class="header"><div class="logo">DT</div><h2>Login to Damitools</h2></div>
-    <div class="card" style="max-width:420px;">
-      <div class="form-row"><input id="email" class="input" placeholder="Email" type="email"></div>
-      <div class="form-row"><input id="password" class="input" placeholder="Password" type="password"></div>
-      <div class="form-row"><button id="loginBtn" class="btn">Login</button> <a href="signup.html" style="margin-left:12px;">Create account</a></div>
-      <div id="msg" class="muted"></div>
+    <div class="logo">DT</div>
+    <h2>Login to Your Account</h2>
+    <div class="card">
+      <input type="text" id="name" placeholder="Your name">
+      <button class="btn" onclick="fakeLogin()">Login</button>
+      <div id="msg"></div>
     </div>
-    <div class="footer">Don't have an account? <a href="signup.html">Sign up</a></div>
+    <div class="footer">
+      Don’t have an account? <a href="signup.html" style="color:lime">Sign up</a>
+    </div>
   </div>
-<!-- Firebase config placeholder -->
 
-
-<script>
-  const firebaseConfig = {
-    apiKey: "REPLACE_ME",
-    authDomain: "REPLACE_ME",
-    projectId: "REPLACE_ME",
-    appId: "REPLACE_ME"
-  };
-  firebase.initializeApp(firebaseConfig);
-</script>
-
-<script>
-  const auth = firebase.auth();
-  document.getElementById('loginBtn').addEventListener('click', async ()=>{
-    const email = document.getElementById('email').value;
-    const pwd = document.getElementById('password').value;
-    try {
-      await auth./* removed */(email, pwd);
-      document.getElementById('msg').textContent = 'Login successful — redirecting...';
-      setTimeout(()=>{ window.location = 'index.html'; }, 900);
-    } catch(e) {
-      document.getElementById('msg').textContent = e.message || 'Login failed';
+  <script>
+    function fakeLogin() {
+      const name = document.getElementById('name').value.trim();
+      if (!name) {
+        document.getElementById('msg').textContent = 'Please enter your name';
+        return;
+      }
+      const user = { name, loggedAt: Date.now() };
+      localStorage.setItem('damitools_user', JSON.stringify(user));
+      document.getElementById('msg').textContent = 'Logging in — redirecting...';
+      setTimeout(() => window.location = "courses.html", 1000);
     }
-  });
-</script>
 
-<script>
-  // Fake frontend-only auth for demo: stores simple user object in localStorage
-  function fakeSignupOrLogin(isSignup){
-    var name = document.getElementById('name') ? document.getElementById('name').value.trim() : '';
-    var email = document.getElementById('email') ? document.getElementById('email').value.trim() : '';
-    if(!name){
-      document.getElementById('msg').textContent = 'Please enter a name';
-      return;
+    // Matrix Background
+    const c = document.getElementById("matrix");
+    const ctx = c.getContext("2d");
+    c.height = window.innerHeight;
+    c.width = window.innerWidth;
+    const letters = "01";
+    const fontSize = 14;
+    const columns = c.width / fontSize;
+    const drops = [];
+    for (let i = 0; i < columns; i++) drops[i] = 1;
+    function draw() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, c.width, c.height);
+      ctx.fillStyle = "#0f0";
+      ctx.font = fontSize + "px monospace";
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > c.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+      }
     }
-    var user = { name: name, email: email || null, loggedAt: Date.now() };
-    localStorage.setItem('damitools_user', JSON.stringify(user));
-    document.getElementById('msg').textContent = 'Logged in as ' + name + ' — redirecting...';
-    setTimeout(function(){ window.location = '/'; }, 800);
-  }
-
-  function logoutFake(){
-    localStorage.removeItem('damitools_user');
-    location.reload();
-  }
-
-  // Show quick banner on pages
-  document.addEventListener('DOMContentLoaded', function(){
-    var user = localStorage.getItem('damitools_user');
-    if(user){
-      try {
-        user = JSON.parse(user);
-        var b = document.getElementById('auth-banner');
-        if(!b){
-          b = document.createElement('div');
-          b.id = 'auth-banner';
-          b.style.cssText = 'position:fixed;right:16px;top:16px;background:rgba(0,0,0,0.6);padding:10px 14px;border-radius:10px;z-index:9999;color:#e6eef4;';
-          document.body.appendChild(b);
-        }
-        b.innerHTML = 'Hello, <strong>'+ (user.name || user.email || 'user') +'</strong> <button onclick="logoutFake()" style="margin-left:10px;padding:6px 8px;border-radius:6px;border:none;background:#ff7a7a;color:#021;cursor:pointer">Logout</button>';
-      } catch(e){}
-    }
-  });
-</script>
-
-</body></html>
-
-  <div class="card" style="max-width:420px;">
-    <div class="form-row"><input id="name" class="input" placeholder="Your name"></div>
-    <div class="form-row"><input id="email" class="input" placeholder="Email (optional)"></div>
-    <div class="form-row"><button class="btn" onclick="fakeSignupOrLogin(true)">Continue</button></div>
-    <div id="msg" class="muted"></div>
-  </div>
+    setInterval(draw, 33);
+  </script>
+</body>
+</html>
