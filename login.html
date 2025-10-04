@@ -1,0 +1,89 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Login - Damitools</title><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="assets/css/damitools-style.css"></head>
+<body>
+  <div class="bg-glow" aria-hidden="true"></div>
+  <div class="container">
+    <div class="header"><div class="logo">DT</div><h2>Login to Damitools</h2></div>
+    <div class="card" style="max-width:420px;">
+      <div class="form-row"><input id="email" class="input" placeholder="Email" type="email"></div>
+      <div class="form-row"><input id="password" class="input" placeholder="Password" type="password"></div>
+      <div class="form-row"><button id="loginBtn" class="btn">Login</button> <a href="signup.html" style="margin-left:12px;">Create account</a></div>
+      <div id="msg" class="muted"></div>
+    </div>
+    <div class="footer">Don't have an account? <a href="signup.html">Sign up</a></div>
+  </div>
+<!-- Firebase config placeholder -->
+
+
+<script>
+  const firebaseConfig = {
+    apiKey: "REPLACE_ME",
+    authDomain: "REPLACE_ME",
+    projectId: "REPLACE_ME",
+    appId: "REPLACE_ME"
+  };
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+<script>
+  const auth = firebase.auth();
+  document.getElementById('loginBtn').addEventListener('click', async ()=>{
+    const email = document.getElementById('email').value;
+    const pwd = document.getElementById('password').value;
+    try {
+      await auth./* removed */(email, pwd);
+      document.getElementById('msg').textContent = 'Login successful — redirecting...';
+      setTimeout(()=>{ window.location = 'index.html'; }, 900);
+    } catch(e) {
+      document.getElementById('msg').textContent = e.message || 'Login failed';
+    }
+  });
+</script>
+
+<script>
+  // Fake frontend-only auth for demo: stores simple user object in localStorage
+  function fakeSignupOrLogin(isSignup){
+    var name = document.getElementById('name') ? document.getElementById('name').value.trim() : '';
+    var email = document.getElementById('email') ? document.getElementById('email').value.trim() : '';
+    if(!name){
+      document.getElementById('msg').textContent = 'Please enter a name';
+      return;
+    }
+    var user = { name: name, email: email || null, loggedAt: Date.now() };
+    localStorage.setItem('damitools_user', JSON.stringify(user));
+    document.getElementById('msg').textContent = 'Logged in as ' + name + ' — redirecting...';
+    setTimeout(function(){ window.location = '/'; }, 800);
+  }
+
+  function logoutFake(){
+    localStorage.removeItem('damitools_user');
+    location.reload();
+  }
+
+  // Show quick banner on pages
+  document.addEventListener('DOMContentLoaded', function(){
+    var user = localStorage.getItem('damitools_user');
+    if(user){
+      try {
+        user = JSON.parse(user);
+        var b = document.getElementById('auth-banner');
+        if(!b){
+          b = document.createElement('div');
+          b.id = 'auth-banner';
+          b.style.cssText = 'position:fixed;right:16px;top:16px;background:rgba(0,0,0,0.6);padding:10px 14px;border-radius:10px;z-index:9999;color:#e6eef4;';
+          document.body.appendChild(b);
+        }
+        b.innerHTML = 'Hello, <strong>'+ (user.name || user.email || 'user') +'</strong> <button onclick="logoutFake()" style="margin-left:10px;padding:6px 8px;border-radius:6px;border:none;background:#ff7a7a;color:#021;cursor:pointer">Logout</button>';
+      } catch(e){}
+    }
+  });
+</script>
+
+</body></html>
+
+  <div class="card" style="max-width:420px;">
+    <div class="form-row"><input id="name" class="input" placeholder="Your name"></div>
+    <div class="form-row"><input id="email" class="input" placeholder="Email (optional)"></div>
+    <div class="form-row"><button class="btn" onclick="fakeSignupOrLogin(true)">Continue</button></div>
+    <div id="msg" class="muted"></div>
+  </div>
