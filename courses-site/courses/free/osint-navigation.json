@@ -1,0 +1,11 @@
+{
+  "title": "OSINT NAVIGATION",
+  "description": "Enter the type of data you have (domain, email, username, phone number) and get a list of tools you can use to gather information based on this data",
+  "files": [
+    {
+      "name": "link",
+      "url": "https://osint.nova-saas.com/",
+      "type": "link"
+    }
+  ]
+}
