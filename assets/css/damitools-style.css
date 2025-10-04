@@ -1,0 +1,12 @@
+/* Damitools style (dark glowing background) */
+body { margin:0; font-family:Inter, system-ui, Arial; background: radial-gradient(circle at 10% 10%, rgba(106,0,255,0.08), transparent 10%), radial-gradient(circle at 90% 90%, rgba(0,255,213,0.06), transparent 10%), linear-gradient(180deg,#05060a,#07101a 60%); color:#e6eef4; min-height:100vh;}
+.bg-glow { position:fixed; inset:0; pointer-events:none; z-index:0; background-image: radial-gradient(circle at 10% 10%, rgba(106,0,255,0.12), transparent 8%), radial-gradient(circle at 90% 90%, rgba(0,255,213,0.08), transparent 12%); filter: blur(40px); opacity:0.9; }
+.container { position:relative; z-index:2; max-width:1100px; margin:40px auto; padding:24px; }
+.logo { height:56px; width:56px; border-radius:12px; background:linear-gradient(135deg,#00ffd5,#6a00ff); display:flex; align-items:center; justify-content:center; font-weight:700; color:#021;}
+.card { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:12px; padding:16px; margin-bottom:12px; box-shadow:0 8px 30px rgba(0,0,0,0.6); }
+.btn { padding:10px 14px; border-radius:10px; background:linear-gradient(90deg,#00ffd5,#6a00ff); color:#021; font-weight:700; text-decoration:none; display:inline-block;}
+.input{ width:100%; padding:10px; border-radius:8px; background:rgba(0,0,0,0.32); border:1px solid rgba(255,255,255,0.03); color:#e6eef4; }
+.course-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px;}
+.course{ padding:12px; border-radius:10px; background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.02); }
+.muted{ color:rgba(230,238,244,0.6); }
+.footer{ margin-top:30px; text-align:center; color:rgba(230,238,244,0.5); font-size:0.9rem; }
