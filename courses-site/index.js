@@ -1,44 +1,43 @@
-const express = require('express');
-const path = require('path');
-const fs = require('fs');
+// index.js
 
-const app = express();
-const PORT = process.env.PORT || 3000;
+// MATRIX ANIMATION
+const canvas = document.getElementById('matrix');
+const ctx = canvas.getContext('2d');
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
 
-// Set view engine
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%";
+const fontSize = 16;
+const columns = canvas.width / fontSize;
+const drops = [];
 
-// Middleware
-app.use(express.static(path.join(__dirname, 'public')));
+for (let x = 0; x < columns; x++) drops[x] = 1;
 
-// Load config
-const config = JSON.parse(fs.readFileSync('./config.json'));
-
-// Helper function to load courses
-function loadCourses(type) {
-    const dir = path.join(__dirname, 'courses', type);
-    if (!fs.existsSync(dir)) return [];
-    return fs.readdirSync(dir)
-        .filter(file => file.endsWith('.json'))
-        .map(file => {
-            const data = JSON.parse(fs.readFileSync(path.join(dir, file)));
-            return data;
-        });
+function draw() {
+  ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "#0F0";
+  ctx.font = fontSize + "px monospace";
+  for (let i = 0; i < drops.length; i++) {
+    const text = chars.charAt(Math.floor(Math.random() * chars.length));
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+    drops[i]++;
+  }
 }
 
-// Routes
-app.get('/', (req, res) => {
-    const freeCourses = loadCourses('free');
-    const premiumCourses = loadCourses('premium');
-    res.render('index', { config, freeCourses, premiumCourses });
-});
+setInterval(draw, 35);
 
-app.get('/contact', (req, res) => {
-    res.render('contact', { config });
-});
-
-// Start server
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
+// FAKE LOGIN REDIRECT (optional for signup/login pages)
+if (window.location.pathname.includes('login.html') || window.location.pathname.includes('signup.html')) {
+  const form = document.querySelector('form');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.querySelector("input[name='name']")?.value || "User";
+      localStorage.setItem("damiUser", name);
+      alert(`Welcome, ${name}`);
+      window.location.href = "courses.html";
+    });
+  }
+}
